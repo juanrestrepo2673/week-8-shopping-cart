@@ -16,6 +16,10 @@ export const useFilters = () => {
 			(
 				filters.category === '' ||
 				product.category === filters.category
+			) &&
+			(
+				filters.title === '' ||
+				product.title.includes(filters.title) 
 			)
 		)
 	)

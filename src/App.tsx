@@ -4,7 +4,6 @@ import { Header } from './components/Header/Header'
 import { useFilters } from './hooks/useFilters'
 import { useCart } from './hooks/useCart'
 
-
 function App() {
 	const { filteredProducts } = useFilters()
 	const { cartItems, AddToCart } = useCart();
