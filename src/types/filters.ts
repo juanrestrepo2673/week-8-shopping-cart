@@ -1,4 +1,5 @@
 export interface IFilters {
 	category: string,
-	minPrice: number
+	minPrice: number,
+	title: string
 }
