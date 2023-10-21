@@ -1,8 +1,10 @@
 import Products from './components/Products/Products'
-import ProductsData from './__mocks__/products.json'
 import { useState } from 'react'
 import { product } from './types/product'
 import Cart from './components/Cart/Cart'
+import { Header } from './components/Header/Header'
+import { Filters } from './components/Filters/Filters'
+import { useFilters } from './hooks/useFilters'
 
 
 function App() {
@@ -12,11 +14,13 @@ function App() {
 		setCartItems([...cartItems, product])
 	}
 
+	const { filteredProducts } = useFilters()
 
 	return (
 		<>
 			<Cart cartItems={cartItems} />
-			<Products products={ProductsData} addToCart={handleAddToCart} />
+			<Header />
+			<Products products={filteredProducts} addToCart={handleAddToCart} />
 		</>
 	)
 }
