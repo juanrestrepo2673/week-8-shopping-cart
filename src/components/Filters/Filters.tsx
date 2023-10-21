@@ -1,57 +1,61 @@
-import { ChangeEvent } from 'react'
-import './Filters.css'
-import { useFilters } from '../../hooks/useFilters'
+import { ChangeEvent } from "react";
+import "./Filters.css";
+import { useFilters } from "../../hooks/useFilters";
 
 export function Filters() {
+  const { filters, setFilters } = useFilters();
 
-	const { filters, setFilters } = useFilters()
+  const handleChangeMinPrice = (event: ChangeEvent<HTMLInputElement>) => {
+    setFilters((prevState) => ({
+      ...prevState,
+      minPrice: event.target.valueAsNumber,
+    }));
+  };
 
-	const handleChangeMinPrice = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setFilters((prevState) => ({
+      ...prevState,
+      category: event.target.value,
+    }));
+  };
 
-		setFilters((prevState) => (
-			{
-				...prevState,
-				minPrice: event.target.valueAsNumber
-			}
-		))
-	}
+  const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setFilters((prevState) => ({
+      ...prevState,
+      title: event.target.value,
+    }));
+  };
 
-	const handleDescriptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
-		setFilters((prevState) => (
-			{
-				...prevState,
-				category: event.target.value
-			}
-		))
-	}
+  return (
+    <div>
+      <section className="filters">
+        <div>
+          <label htmlFor="price">Price starting at</label>
+          <input
+            type="range"
+            id="price"
+            onChange={handleChangeMinPrice}
+            min="0"
+            max="1000"
+          />
+          <span> ${filters.minPrice}</span>
+        </div>
 
-	return (
-		<section className="filters">
-
-			<div>
-				<label htmlFor="price" >Price starting at</label>
-				<input
-					type="range"
-					id="price"
-					onChange={handleChangeMinPrice}
-					min="0"
-					max="1000"
-				/>
-				<span> ${filters.minPrice}</span>
-			</div>
-
-
-			<div>
-				<label htmlFor="category" > Category</label>
-				<select id="category" onChange={handleDescriptionChange}>
-					<option value=''>All Products</option>
-					<option value='jewelery'>jewelery</option>
-					<option value='electronics'>electronics</option>
-				</select>
-			</div>
-
-
-
-		</section>
-	)
+        <div>
+          <label htmlFor="category"> Category</label>
+          <select id="category" onChange={handleCategoryChange}>
+            <option value="">All Products</option>
+            <option value="jewelery">jewelery</option>
+            <option value="electronics">electronics</option>
+          </select>
+        </div>
+      </section>
+      <section>
+        <div>
+          <label htmlFor="title">Search</label>
+          <input type="text" id="title" onChange={handleTitleChange} />
+        </div>
+      </section>
+    </div>
+  );
 }

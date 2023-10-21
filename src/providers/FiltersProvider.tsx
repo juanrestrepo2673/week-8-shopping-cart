@@ -4,7 +4,8 @@ import React, { createContext, useState } from 'react'
 
 const initialFilters = {
 	minPrice: 0,
-	category: ''
+	category: '',
+	title: ''
 }
 
 export const FilterContext = createContext({
