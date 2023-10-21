@@ -1,0 +1,9 @@
+.filters {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.filters label {
+	margin-right: 0.5rem;
+}

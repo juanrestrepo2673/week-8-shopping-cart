@@ -10,7 +10,11 @@ Local
 
  Requirements
 
-- Create box search
-- Create filter by category and price
+[x] Create filter by category and price
+	To avoid prop drilling use composition or context
+	
 - Use useContext to replace states from CartItems
+
 - Use LocalStorage to save the cart items
+  
+- Create box search
