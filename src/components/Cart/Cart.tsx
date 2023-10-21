@@ -1,7 +1,8 @@
 import { product } from '@/types/product'
 import { CartIcon } from '../Products/Icons/Icons';
 import './Cart.css'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import CartContext from '../CartItem/CartContext';
 
 interface cartItemsProps {
 	cartItems: product[];
@@ -11,6 +12,7 @@ interface cartItemsProps {
 export default function Cart({ cartItems }: cartItemsProps) {
 
 	const [isOpenCart, setIsOpenCart] = useState<boolean>(false)
+	const contextCartItems = useContext(CartContext);
 
 	return (
 		<>
@@ -24,7 +26,7 @@ export default function Cart({ cartItems }: cartItemsProps) {
 				<aside className='cart'>
 					<ul>
 						{
-							cartItems.map((product) => (
+							contextCartItems.map((product) => (
 								<li className='product' key={product.id}>
 									<img src={product.image} alt={product.title}></img>
 									<div>
