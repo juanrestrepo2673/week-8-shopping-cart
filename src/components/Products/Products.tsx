@@ -1,16 +1,17 @@
-
-
 import { product } from '@/types/product'
 import './Products.css'
 import { AddToCart } from './Icons/Icons';
+import { useContext } from 'react';
+import { CartContext } from '../../providers/CartProvider';
 
 interface ProductsProps {
   products: product[];
-  addToCart: (product: product) => void
+
 }
 
+export default function Products({ products }: ProductsProps) {
+  const { setProducts } = useContext(CartContext)
 
-export default function Products({ products, addToCart }: ProductsProps) {
   return (
     <main className='products'>
       <h1>Products</h1>
@@ -23,7 +24,7 @@ export default function Products({ products, addToCart }: ProductsProps) {
               <div>
                 <strong>{product.title}</strong> - ${product.price}
               </div>
-              <button onClick={() => addToCart(product)}>Add to card<AddToCart /></button>
+              <button onClick={() => setProducts((prev: product[]) => [...prev, product])}>Add to card<AddToCart /></button>
             </li>
           ))
         }
