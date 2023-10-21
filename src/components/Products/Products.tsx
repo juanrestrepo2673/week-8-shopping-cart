@@ -21,9 +21,10 @@ export default function Products({ products, addToCart }: ProductsProps) {
             <li className='product' key={product.id}>
               <img src={product.image} alt={product.title}></img>
               <div>
-                <strong>{product.title}</strong> - ${product.price}
+                <strong>{product.title}</strong>
+							<p>${product.price}</p>
               </div>
-              <button onClick={() => addToCart(product)}>Add to card<AddToCart /></button>
+              <button onClick={() => addToCart(product)}><AddToCart /></button>
             </li>
           ))
         }

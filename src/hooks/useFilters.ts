@@ -8,8 +8,10 @@ import { product } from '@/types/product'
 
 export const useFilters = () => {
 
+	
 	const { filters, setFilters } = useContext(FilterContext)
-
+	
+	
 	const filterProducts = (products: product[]) => (
 		products.filter(product =>
 			product.price >= filters.minPrice &&
