@@ -25,6 +25,16 @@ export function Filters() {
 		))
 	}
 
+	const handleSearchProducts = (event: ChangeEvent<HTMLSelectElement>) => {
+		setFilters((prevState) => (
+			{
+				...prevState,
+				title: event.target.value
+			}
+		))
+	}
+
+
 	return (
 		<section className="filters">
 
@@ -40,6 +50,13 @@ export function Filters() {
 				<span> ${filters.minPrice}</span>
 			</div>
 
+			<div>
+				<label htmlFor="search" > Search</label>
+				<input 
+					id="search" 
+					onChange={handleSearchProducts}
+				/>
+			</div>
 
 			<div>
 				<label htmlFor="category" > Category</label>
@@ -49,8 +66,6 @@ export function Filters() {
 					<option value='electronics'>electronics</option>
 				</select>
 			</div>
-
-
 
 		</section>
 	)
