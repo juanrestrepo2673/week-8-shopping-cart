@@ -39,7 +39,7 @@ export function Filters() {
 		<section className="filters">
 
 			<div>
-				<label htmlFor="price" >Price starting at</label>
+				<label htmlFor="price" >Price starting at: </label>
 				<input
 					type="range"
 					id="price"
