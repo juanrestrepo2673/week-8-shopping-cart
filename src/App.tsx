@@ -5,22 +5,19 @@ import Cart from './components/Cart/Cart'
 import { Header } from './components/Header/Header'
 import { Filters } from './components/Filters/Filters'
 import { useFilters } from './hooks/useFilters'
+import { CartProvider } from './providers/CartProvider'
 
 
 function App() {
-	const [cartItems, setCartItems] = useState<product[]>([])
-
-	const handleAddToCart = (product: product) => {
-		setCartItems([...cartItems, product])
-	}
-
 	const { filteredProducts } = useFilters()
 
 	return (
 		<>
-			<Cart cartItems={cartItems} />
-			<Header />
-			<Products products={filteredProducts} addToCart={handleAddToCart} />
+			<CartProvider>
+				<Cart />
+				<Header />
+				<Products products={filteredProducts} />
+			</CartProvider>
 		</>
 	)
 }

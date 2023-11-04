@@ -43,3 +43,14 @@
 .product button:hover {
 	scale: 1.2;
 }
+
+
+.removeProduct {
+	background: rgb(170, 86, 86);
+	color: white;
+}
+
+.addProduct {
+	background: rgb(219, 219, 219);
+	color: white;
+}
