@@ -1,4 +1,3 @@
-import { product } from '@/types/product'
 import { CartIcon } from '../Products/Icons/Icons';
 import './Cart.css'
 import { useCart } from '../../hooks/useCart';
@@ -10,7 +9,7 @@ export default function Cart() {
 
 	return (
 		<>
-			<label className='cart-button' htmlFor='cartCheckboxId'>
+			<label className='cart-button' htmlFor='cartCheckboxId' aria-label='show cart'>
 				<CartIcon />
 			</label>
 			<input id='cartCheckboxId' type='checkbox' />

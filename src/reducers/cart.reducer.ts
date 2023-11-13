@@ -1,8 +1,14 @@
+import { product } from "@/types/product";
 
-export const cartInitialState = JSON.parse(window.localStorage.getItem('cartItems')) || []
+export const cartInitialState = JSON.parse(window.localStorage.getItem('cartItems') || '[]') 
+
+type Action =
+	| { type: 'ADD_TO_CART', payload: product }
+	| { type: 'REMOVE_FROM_CART', payload: product }
+	| { type: 'CLEAR_CART', payload: product }
 
 
-export const cartReducer = (state, action) => {
+export const cartReducer = (state: product[], action: Action): product[] => {
 
 	const { type, payload } = action;
 	const { id } = payload
@@ -14,8 +20,7 @@ export const cartReducer = (state, action) => {
 		CLEAR_CART: 'CLEAR_CART'
 	}
 
-
-	const updateLocalStorage = state => window.localStorage.setItem('cartItems', JSON.stringify(state))
+	const updateLocalStorage = (state: product[]) => window.localStorage.setItem('cartItems', JSON.stringify(state))
 
 
 	if (type === CART_ACTION_TYPES.ADD_TO_CART) {
@@ -42,7 +47,7 @@ export const cartReducer = (state, action) => {
 
 
 	if (type === CART_ACTION_TYPES.REMOVE_FROM_CART) {
-		const newState = state.filter(item => item.id !== id)
+		const newState = state.filter((item: product) => item.id !== id)
 		updateLocalStorage(newState)
 		return newState
 	}
@@ -51,5 +56,7 @@ export const cartReducer = (state, action) => {
 		updateLocalStorage([])
 		return []
 	}
+
+	return state
 
 }

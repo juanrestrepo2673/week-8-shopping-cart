@@ -9,5 +9,5 @@ export interface product {
 		rate: number,
 		count: number
 	}
-
+	quantity: number
 }

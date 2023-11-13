@@ -11,12 +11,12 @@ interface ProductsProps {
 
 
 export default function Products({ products }: ProductsProps) {
-
+	
 	const { addToCart, removeFromCart, cartItems } = useCart()
+	
+	const checkProductInCart = (product: product) => cartItems.some(item => item.id === product.id)
 
-	const checkProductInCart = product => cartItems.some(item => item.id === product.id)
-
-	const handleProductButtonClick = (product, isProductInCart) => {
+	const handleProductButtonClick = (product: product, isProductInCart: boolean) => {
 		if (isProductInCart) {
 			return removeFromCart(product)
 		}
@@ -40,6 +40,7 @@ export default function Products({ products }: ProductsProps) {
 								</div>
 								<button
 									className={isProductInCart ? 'removeProduct' : 'addProduct'}
+									aria-label={isProductInCart ? 'remove from cart' : 'add to cart'}
 
 									onClick={() => handleProductButtonClick(product, isProductInCart)}>
 									{

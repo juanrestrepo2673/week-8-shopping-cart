@@ -1,17 +1,17 @@
 
 import { useContext } from 'react'
 import { FilterContext } from '../providers/FiltersProvider'
-import ProductsData from '../__mocks__/products.json'
 
 import { product } from '@/types/product'
+import { useProducts } from './useProducts'
 
 
 export const useFilters = () => {
 
-	
+	const { products: productsData } = useProducts();
 	const { filters, setFilters } = useContext(FilterContext)
-	
-	
+
+
 	const filterProducts = (products: product[]) => (
 		products.filter(product =>
 			product.price >= filters.minPrice &&
@@ -22,7 +22,7 @@ export const useFilters = () => {
 		)
 	)
 
-	const filteredProducts = filterProducts(ProductsData)
+	const filteredProducts = filterProducts(productsData)
 
 	return ({
 		filters,
